@@ -1,7 +1,7 @@
 import React from 'react'
 import PhotoProfile from '../../atoms/photoProfile/photoProfile'
 
-import cv from '../../assets/cv.pdf'
+import CV from '../../../public/assets/cv.pdf'
 
 import * as styles from './profile.module.scss'
 import { useThemeContext } from '../../utilities/themeContext'
@@ -15,7 +15,7 @@ const Profile = (): JSX.Element => {
             <PhotoProfile />
             <a
                 rel="noopener noreferrer"
-                href={cv}
+                href={CV}
                 target="_blank"
                 title="Download my CV"
                 download="CV Michele Pulvirenti"

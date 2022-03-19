@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import * as styles from "./navItem.module.scss";
 import { NavItemProps } from "./navItem.type";
 
-import { Link } from "gatsby";
+import Link from "next/link";
 
 const NavItem = ({ isHref, path, onClick, text }: NavItemProps): JSX.Element => {
 
@@ -35,21 +35,20 @@ const NavItem = ({ isHref, path, onClick, text }: NavItemProps): JSX.Element => 
   return (
     <>
       {isHref ? (
-        <a
-          href={path}
-          className={on ? styles.itemOn : styles.item}
-          onClick={onClick}
-          title={"Go to " + text + " section"}
-        >
-          {text}
-        </a>
+        <div onMouseDown={onClick}>
+          <a
+            href={path}
+            className={on ? styles.itemOn : styles.item}
+            title={"Go to " + text + " section"}
+          >
+            {text}
+          </a>
+        </div>
       ) : (
-        <div>
+        <div className={styles.link} onMouseDown={onClick}>
           <Link
-            className={styles.link}
-            to={path}
-            onClick={onClick}
-            title={"Go to " + text + " page"}
+            href={path}
+          //title={"Go to " + text + " page"}
           >
             <p className={styles.item}>{text}</p>
           </Link>

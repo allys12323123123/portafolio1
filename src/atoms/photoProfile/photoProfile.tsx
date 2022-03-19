@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticImage } from "gatsby-plugin-image"
+import Image from "next/image"
 
 import * as styles from './photoProfile.module.scss'
 import detectBrowser from '../../utilities/detectBrowser'
@@ -64,13 +64,13 @@ const PhotoProfile = (): JSX.Element => {
                         className={styles.profescional}
                     />
     */}
-            <StaticImage
-                src={"../../images/profescional.png"}
+            <Image
+                src={"../../../public/images/profescional.png"}
                 alt="Michele Pulvirenti"
-                placeholder="tracedSVG"
-                layout="constrained"
-                style={{ zIndex: 1 }} //for safari
-                tracedSVGOptions={{ color: "dimGrey" }}
+                placeholder="blur"
+                layout="fixed"
+                //style={{ zIndex: 1 }} //for safari
+                //tracedSVGOptions={{ color: "dimGrey" }}
                 quality={100}
                 width={200}
                 height={200}

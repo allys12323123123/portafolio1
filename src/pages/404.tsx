@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import Link from "next/link"
 import SEO from "../components/seo/seo"
 import Layout from "../components/layout/layout"
 
@@ -32,12 +32,14 @@ const NotFoundPage = (): JSX.Element => {
               </>
             ) : null}
             <br />
-            <Link to="/" id="link">Go home</Link>.
+            <div id="link">
+              <Link href="/">Go home</Link>.
+            </div>
           </p>
         </>
       </Layout>
     </>
-  
+
   )
 }
 

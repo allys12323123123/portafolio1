@@ -1,7 +1,7 @@
 import React from 'react'
 import { useThemeContext } from '../../utilities/themeContext'
-import RocketSvg from '../../assets/rocket.svg'
-import WindSvg from '../../assets/wind.svg'
+import RocketSvg from '../../../public/assets/rocket.svg'
+import WindSvg from '../../../public/assets/wind.svg'
 
 import * as styles from './rocket.module.scss'
 

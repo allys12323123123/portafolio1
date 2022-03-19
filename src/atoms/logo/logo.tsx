@@ -3,7 +3,7 @@ import React from 'react'
 import * as styles from './logo.module.scss'
 import { LogoProps } from './logo.types'
 
-import Mlogo from '../../assets/logo.svg'
+import Mlogo from '../../../public/assets/logo.svg'
 import { useThemeContext } from '../../utilities/themeContext'
 
 const Logo = ({ width = 50, to = '/', title = 'Go to Home Page' }: LogoProps): JSX.Element => {

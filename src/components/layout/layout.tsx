@@ -11,8 +11,8 @@ import Ball from '../../atoms/ball/ball'
 import Separator from '../../atoms/separator/separator'
 import ArrowUp from '../../atoms/arrowUp/arrowUp'
 
-import BallMoving from '../../assets/ballMoving.svg'
-import BallStill from '../../assets/ballStill.svg'
+import BallMoving from '../../../public/assets/ballMoving.svg'
+import BallStill from '../../../public/assets/ballStill.svg'
 
 const Layout = ({ children, noMenu = false }: LayoutProps): JSX.Element => {
     const [browser, setBrowser] = useState<string>('waiting')

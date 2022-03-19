@@ -2,13 +2,13 @@ import React from 'react'
 
 import * as styles from './footer.module.scss'
 
-//import Phone from '../../assets/phone.svg'
-import Email from '../../assets/email.svg'
-import Linkedin from '../../assets/linkedin.svg'
-import Github from '../../assets/github.svg'
+//import Phone from '../../../public/assets/phone.svg'
+import Email from '../../../public/assets/email.svg'
+import Linkedin from '../../../public/assets/linkedin.svg'
+import Github from '../../../public/assets/github.svg'
 import { useThemeContext } from '../../utilities/themeContext'
 import { email, github, linkedin } from '../../utilities/info'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 
 const width: string = "50px";
 const height: string = "50px";
@@ -36,9 +36,12 @@ const Footer = (): JSX.Element => {
                 </a>
             </div>
         </div>
-        <Link to={"/game"} id={"link"} >
-            Wanna play a game?
-        </Link>
+        <div id={"link"}>
+            <Link href={"/game"} >
+                Wanna play a game?
+            </Link>
+        </div>
+
     </>
     )
 }
