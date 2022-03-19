@@ -3,6 +3,7 @@ import Image from "next/image"
 
 import * as styles from './photoProfile.module.scss'
 import detectBrowser from '../../utilities/detectBrowser'
+import Profescional from "../../../public/images/profescional.png"
 //import { useThemeContext } from '../../utilities/themeContext'
 
 const PhotoProfile = (): JSX.Element => {
@@ -65,7 +66,7 @@ const PhotoProfile = (): JSX.Element => {
                     />
     */}
             <Image
-                src={"../../../public/images/profescional.png"}
+                src={Profescional}
                 alt="Michele Pulvirenti"
                 placeholder="blur"
                 layout="fixed"

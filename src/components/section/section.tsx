@@ -74,8 +74,8 @@ const Section = ({ title, children, id, reversed = false, Svg, paragraph = false
                                         onMouseDown={setClicked}
                                     >
                                         <Svg.svg
-                                            width={"100px"}
-                                            height={"100px"}
+                                            width="100px"
+                                            height="100px"
                                             className={isMouseOn ? styles.trebbling : null || isClicked ? styles.move : null}
                                             fill={Svg.fill ? Svg.fill : "none"}
                                             stroke={Svg.stroke ? Svg.stroke : "none"}
