@@ -6,7 +6,7 @@ export type SectionProps = {
   reversed?: boolean
   id?: string
   Svg?: {
-    svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>
+    svg: StaticImageData | string
     fill?: string
     stroke?: string
   }

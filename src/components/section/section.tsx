@@ -4,6 +4,7 @@ import { SectionProps } from './section.types'
 import * as styles from './section.module.scss'
 import sleep from '../../utilities/sleep';
 import { useThemeContext } from '../../utilities/themeContext';
+import Image from 'next/image';
 
 const Section = ({ title, children, id, reversed = false, Svg, paragraph = false }: SectionProps): JSX.Element => {
 
@@ -46,13 +47,17 @@ const Section = ({ title, children, id, reversed = false, Svg, paragraph = false
                                         onMouseEnter={setMouseOn}
                                         onMouseDown={setClicked}
                                     >
-                                        <Svg.svg
-                                            width={"100px"}
-                                            height={"100px"}
+                                        <svg
                                             className={isMouseOn ? styles.trebbling : null || isClicked ? styles.move : null}
                                             fill={Svg.fill ? Svg.fill : "none"}
                                             stroke={Svg.stroke ? Svg.stroke : "none"}
-                                        />
+                                        >
+                                            <Image
+                                                src={Svg.svg}
+                                                width={"100px"}
+                                                height={"100px"}
+                                            />
+                                        </svg>
                                     </div>
                                     : null
                             }
@@ -73,13 +78,17 @@ const Section = ({ title, children, id, reversed = false, Svg, paragraph = false
                                         onMouseEnter={setMouseOn}
                                         onMouseDown={setClicked}
                                     >
-                                        <Svg.svg
-                                            width="100px"
-                                            height="100px"
-                                            className={isMouseOn ? styles.trebbling : null || isClicked ? styles.move : null}
+                                        <svg
                                             fill={Svg.fill ? Svg.fill : "none"}
-                                            stroke={Svg.stroke ? Svg.stroke : "none"}
-                                        />
+                                            className={isMouseOn ? styles.trebbling : "" || isClicked ? styles.move : ""}
+
+                                            stroke={Svg.stroke ? Svg.stroke : "none"}>
+                                            <Image
+                                                src={Svg.svg}
+                                                width="100px"
+                                                height="100px"
+                                            />
+                                        </svg>
                                     </div>
                                     : null
                             }

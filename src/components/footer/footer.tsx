@@ -9,6 +9,7 @@ import Github from '../../../public/assets/github.svg'
 import { useThemeContext } from '../../utilities/themeContext'
 import { email, github, linkedin } from '../../utilities/info'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const width: string = "50px";
 const height: string = "50px";
@@ -26,13 +27,19 @@ const Footer = (): JSX.Element => {
             <div className={styles.icons}>
                 {/*<Phone width={width} fill={color} />*/}
                 <a className={styles.icon} href={'mailto:' + email} title={"Send me an email"} target={"_blank"}>
-                    <Email width={width} height={height} fill={color} />
+                    <svg fill={color}>
+                        <Image src={Email} width={width} height={height} />
+                    </svg>
                 </a>
                 <a className={styles.icon} href={linkedin} title={"Linkedin profile"} target={"_blank"}>
-                    <Linkedin width={width} height={height} fill={color} />
+                    <svg fill={color}>
+                        <Image src={Linkedin} width={width} height={height} />
+                    </svg>
                 </a>
                 <a className={styles.icon} href={github} title={"GitHub profile"} target={"_blank"}>
-                    <Github width={width} height={height} fill={color} />
+                    <svg fill={color}>
+                        <Image src={Github} width={width} height={height} />
+                    </svg>
                 </a>
             </div>
         </div>

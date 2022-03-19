@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 import * as styles from './ball.module.scss'
@@ -7,7 +8,7 @@ const Ball = ({ BallSvg, fastAnimation = false }: BallProps): JSX.Element => {
 
     return (
         <div className={fastAnimation ? styles.ballFast : styles.ball}>
-            <BallSvg />
+            <Image src={BallSvg} layout='fill' />
         </div>
     )
 }

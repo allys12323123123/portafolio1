@@ -1,9 +1,9 @@
 import React from 'react'
 import { useThemeContext } from '../../utilities/themeContext'
-import RocketSvg from '../../../public/assets/rocket.svg'
 import WindSvg from '../../../public/assets/wind.svg'
-
+import RocketSvg from '../../../public/assets/rocket.svg'
 import * as styles from './rocket.module.scss'
+import Image from 'next/image'
 
 const Rocket = (): JSX.Element => {
 
@@ -13,11 +13,16 @@ const Rocket = (): JSX.Element => {
         <div className={styles.wrap}>
             <div className={styles.rocketWrap}>
                 <div className={styles.rocket}>
-                    <RocketSvg width="200px" fill={theme === "dark" ? "var(--rocket-dark)" : "var(--rocket-light)"} />
+                    <svg fill={theme === "dark" ? "var(--rocket-dark)" : " var(--rocket-light)"}>
+                        <Image src={RocketSvg} width={200} height={400} />
+                    </svg>
                 </div>
             </div>
             <div className={styles.wind}>
-                <WindSvg width="400px" height="200px" fill={theme === "dark" ? "var(--wind-dark)" : "var(--wind-light)"} />
+
+                <svg fill={theme === "dark" ? "var(--wind-dark)" : "var(--wind-light)"}>
+                    <Image src={WindSvg} width={400} height={200} />
+                </svg>
             </div>
         </div>
     )
