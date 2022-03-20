@@ -18,7 +18,7 @@ const Profile = (): JSX.Element => {
                 href={CV}
                 target="_blank"
                 title="Download my CV"
-                download="CV Michele Pulvirenti"
+                download="CV_Michele_Pulvirenti"
                 className={`${styles.cvButton} ${theme === "dark" ? null : styles.light}`}
             >
                 Download CV

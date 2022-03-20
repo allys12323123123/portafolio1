@@ -6,7 +6,7 @@ import * as styles from './footer.module.scss'
 import Email from '../../../public/assets/email.svg'
 import Linkedin from '../../../public/assets/linkedin.svg'
 import Github from '../../../public/assets/github.svg'
-import { useThemeContext } from '../../utilities/themeContext'
+//import { useThemeContext } from '../../utilities/themeContext'
 import { email, github, linkedin } from '../../utilities/info'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -17,9 +17,9 @@ const height: string = "50px";
 
 const Footer = (): JSX.Element => {
 
-    const theme: string = useThemeContext();
+    //const theme: string = useThemeContext();
 
-    const color: string = theme === "dark" ? "var(--icon-dark)" : "var(--icon-light)"
+    //const color: string = theme === "dark" ? "var(--icon-dark)" : "var(--icon-light)"
 
     return (<>
         <div className={styles.footer} id={"contacts"}>
@@ -27,19 +27,13 @@ const Footer = (): JSX.Element => {
             <div className={styles.icons}>
                 {/*<Phone width={width} fill={color} />*/}
                 <a className={styles.icon} href={'mailto:' + email} title={"Send me an email"} target={"_blank"}>
-                    <svg fill={color}>
-                        <Image src={Email} width={width} height={height} />
-                    </svg>
+                    <Image src={Email} width={width} height={height} />
                 </a>
                 <a className={styles.icon} href={linkedin} title={"Linkedin profile"} target={"_blank"}>
-                    <svg fill={color}>
-                        <Image src={Linkedin} width={width} height={height} />
-                    </svg>
+                    <Image src={Linkedin} width={width} height={height} />
                 </a>
                 <a className={styles.icon} href={github} title={"GitHub profile"} target={"_blank"}>
-                    <svg fill={color}>
-                        <Image src={Github} width={width} height={height} />
-                    </svg>
+                    <Image src={Github} width={width} height={height} />
                 </a>
             </div>
         </div>

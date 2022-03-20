@@ -47,17 +47,20 @@ const Section = ({ title, children, id, reversed = false, Svg, paragraph = false
                                         onMouseEnter={setMouseOn}
                                         onMouseDown={setClicked}
                                     >
-                                        <svg
+                                        <div
                                             className={isMouseOn ? styles.trebbling : null || isClicked ? styles.move : null}
-                                            fill={Svg.fill ? Svg.fill : "none"}
-                                            stroke={Svg.stroke ? Svg.stroke : "none"}
+                                        //fill={Svg.fill ? Svg.fill : "none"}
+                                        //stroke={Svg.stroke ? Svg.stroke : "none"}
                                         >
                                             <Image
                                                 src={Svg.svg}
-                                                width={"100px"}
-                                                height={"100px"}
+                                                width={100}
+                                                height={100}
+                                                alt={title}
+                                                loader={({ src }) => src + "?w=100"}
+                                                objectFit="cover"
                                             />
-                                        </svg>
+                                        </div>
                                     </div>
                                     : null
                             }
@@ -78,17 +81,20 @@ const Section = ({ title, children, id, reversed = false, Svg, paragraph = false
                                         onMouseEnter={setMouseOn}
                                         onMouseDown={setClicked}
                                     >
-                                        <svg
-                                            fill={Svg.fill ? Svg.fill : "none"}
+                                        <div
+                                            //fill={Svg.fill ? Svg.fill : "none"}
                                             className={isMouseOn ? styles.trebbling : "" || isClicked ? styles.move : ""}
-
-                                            stroke={Svg.stroke ? Svg.stroke : "none"}>
+                                        //</div>stroke={Svg.stroke ? Svg.stroke : "none"}
+                                        >
                                             <Image
                                                 src={Svg.svg}
-                                                width="100px"
-                                                height="100px"
+                                                width={100}
+                                                height={100}
+                                                alt={title}
+                                                loader={({ src }) => src + "?w=100"}
+                                                objectFit="cover"
                                             />
-                                        </svg>
+                                        </div>
                                     </div>
                                     : null
                             }

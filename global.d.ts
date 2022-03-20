@@ -10,8 +10,9 @@ declare module '*.png' {
   export default content
 }
 declare module '*.svg' {
-  const component: StaticImageData | string //React.FC<React.SVGProps<SVGSVGElement>>
-  export default component
+  const content: any
+  export const ReactComponent: any
+  export default content
 }
 
 declare module '*.module.scss'
