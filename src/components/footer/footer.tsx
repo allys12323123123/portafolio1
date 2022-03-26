@@ -42,9 +42,9 @@ const Footer = (): JSX.Element => {
 					</a>
 				</div>
 			</div>
-			<div id={"link"}>
+			<span id={"link"}>
 				<Link href={"/game"}>Wanna play a game?</Link>
-			</div>
+			</span>
 		</>
 	)
 }

@@ -47,7 +47,7 @@ export const works: string = `<strong>JEToP - Junior Enterprise of Politecnico d
         <strong>I have increased my knowledge</strong> of web programming by developing websites with frameworks 
         like <strong>React, Gatsby and NextJS</strong> and have improved my backend skills through training.<br/>
         As an example, I developed the Blog section of the association's website 
-        (<a id="link" href="https://jetop.com/blog">https://jetop.com/blog</a>)`
+        (<span id="link"><a href="https://jetop.com/blog">https://jetop.com/blog</a></span>)`
 
 //education
 export const events = [
