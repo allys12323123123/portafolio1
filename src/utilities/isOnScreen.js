@@ -10,12 +10,13 @@ const isOnScreen = (ref, retarded = false) => {
         if (entry.isIntersecting) setIntersecting(true)
         else setIntersecting(false)
       })
-    else
-      sleep(500).then(() => setIntersecting(false)) 
+    else sleep(500).then(() => setIntersecting(false))
   }
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => retarded? setVisible(entry) : setIntersecting(entry.isIntersecting))
+    const observer = new IntersectionObserver(([entry]) =>
+      retarded ? setVisible(entry) : setIntersecting(entry.isIntersecting),
+    )
     observer.observe(ref.current)
     return () => {
       observer.disconnect()

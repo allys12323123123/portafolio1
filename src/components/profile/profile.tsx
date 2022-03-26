@@ -1,19 +1,18 @@
-import React from 'react'
-import PhotoProfile from '../../atoms/photoProfile/photoProfile'
+import React from "react"
+import PhotoProfile from "../../atoms/photoProfile/photoProfile"
 
-import * as styles from './profile.module.scss'
+import * as styles from "./profile.module.scss"
 //import { useThemeContext } from '../../utilities/themeContext'
-import Link from 'next/link'
+import Link from "next/link"
 
 const Profile = (): JSX.Element => {
+	//const theme: string = useThemeContext();
 
-    //const theme: string = useThemeContext();
-
-    return (
-        <div className={styles.profile}>
-            <PhotoProfile />
-            <Link href={"/curriculum"} >View CV</Link>
-            {/*
+	return (
+		<div className={styles.profile}>
+			<PhotoProfile />
+			<Link href={"/curriculum"}>View CV</Link>
+			{/*
             <a
                 rel="noopener noreferrer"
                 href={CV}
@@ -25,8 +24,8 @@ const Profile = (): JSX.Element => {
                 Download CV
             </a>
     */}
-        </div>
-    )
+		</div>
+	)
 }
 
 export default Profile
