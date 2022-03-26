@@ -8,7 +8,7 @@ const Ball = ({ BallSvg, fastAnimation = false }: BallProps): JSX.Element => {
 
     return (
         <div className={fastAnimation ? styles.ballFast : styles.ball}>
-            <Image src={BallSvg} layout='fill' />
+            <Image src={BallSvg} layout='fill' priority />
         </div>
     )
 }
