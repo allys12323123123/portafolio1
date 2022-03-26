@@ -158,7 +158,7 @@ const BashWindow = ({children}: BashWindowProps): JSX.Element => {
 		sleep(2000).then(() => {
 			t.style.transform = ""
 			t.style.opacity = ""
-			calculateDim()
+			sleep(1000).then(() => calculateDim())
 		})
 	}
 
