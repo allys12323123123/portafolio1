@@ -74,6 +74,7 @@ const PhotoProfile = (): JSX.Element => {
           //tracedSVGOptions={{ color: "dimGrey" }}
           quality={100}
           className={styles.profescional}
+          loader={({ src }) => src + "?w=200"}
         />
       </div>
     </div>

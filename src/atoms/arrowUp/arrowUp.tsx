@@ -3,7 +3,7 @@ import React from 'react'
 import * as styles from './arrowUp.module.scss'
 
 import Arrow from '../../../public/assets/arrow.svg'
-import {useThemeContext} from '../../utilities/themeContext'
+import { useThemeContext } from '../../utilities/themeContext'
 import Image from 'next/image'
 
 const ArrowUp = (): JSX.Element => {
@@ -18,7 +18,7 @@ const ArrowUp = (): JSX.Element => {
       id={'arrowUp'}
       title={'Go to top'}
     >
-      <Image src={Arrow} width={'50px'} height={'50px'} />
+      <Image src={Arrow} width={'50px'} height={'50px'} loader={({ src }) => src + "?w=50"} />
     </a>
   )
 }
