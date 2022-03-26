@@ -63,19 +63,19 @@ const PhotoProfile = (): JSX.Element => {
                         height={200}
                         className={styles.profescional}
                     />
-    */}<div className={styles.profescionalWrapper}>
-      <Image
-        src={Profescional}
-        alt="Michele Pulvirenti"
-        placeholder="blur"
-        layout="intrinsic"
-        //style={{ zIndex: 1 }} //for safari
-        //tracedSVGOptions={{ color: "dimGrey" }}
-        quality={100}
-        className={styles.profescional}
-      />
-
-    </div>
+    */}
+      <div className={styles.profescionalWrapper}>
+        <Image
+          src={Profescional}
+          alt="Michele Pulvirenti"
+          placeholder="blur"
+          layout="intrinsic"
+          //style={{ zIndex: 1 }} //for safari
+          //tracedSVGOptions={{ color: "dimGrey" }}
+          quality={100}
+          className={styles.profescional}
+        />
+      </div>
     </div>
   )
 }
