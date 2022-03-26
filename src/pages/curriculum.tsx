@@ -1,6 +1,7 @@
 import React from "react"
 import cv from "../../public/documents/cv.pdf"
 
+
 const Curriculum = () => {
 	return (
 		<>
