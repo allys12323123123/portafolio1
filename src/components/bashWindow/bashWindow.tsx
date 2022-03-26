@@ -1,160 +1,184 @@
-import React, { useEffect, useState, useRef } from 'react'
-import sleep from '../../utilities/sleep'
+import React, {useEffect, useState, useRef} from "react"
+import sleep from "../../utilities/sleep"
 import * as styles from "./bashWindow.module.scss"
-import { BashWindowProps, Dim } from './bashWindow.types'
+import {BashWindowProps, Dim} from "./bashWindow.types"
 
-const BashWindow = ({ children }: BashWindowProps): JSX.Element => {
-    const [dim, setDim] = useState<Dim>({ width: 70, height: 32 })
-    const terminalRef = useRef<null>(null)
-    const [compact, setCompact] = useState<boolean>(false)
-    const [terminal, setTerminal] = useState<HTMLElement>()
+const BashWindow = ({children}: BashWindowProps): JSX.Element => {
+	const [dim, setDim] = useState<Dim>({width: 70, height: 32})
+	const terminalRef = useRef<null>(null)
+	const [compact, setCompact] = useState<boolean>(false)
+	const [terminal, setTerminal] = useState<HTMLElement>()
 
-    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    let startX: number, startY: number, startW: number, startH: number;
+	let pos1 = 0,
+		pos2 = 0,
+		pos3 = 0,
+		pos4 = 0
+	let startX: number, startY: number, startW: number, startH: number
 
-    const calculateDim = () => {
-        if (document.getElementById("terminal")) {
-            const rect: DOMRect = document.getElementById("terminal")!.getBoundingClientRect();
-            setDim({ width: Math.floor(rect.width), height: Math.floor(rect.height) })
-        }
-    }
+	const calculateDim = () => {
+		if (document.getElementById("terminal")) {
+			const rect: DOMRect | undefined = document.getElementById("terminal")?.getBoundingClientRect()
+			let w = 0,
+				h = 0
+			if (rect != undefined) {
+				w = rect.width
+				h = rect.height
+			}
+			setDim({width: Math.floor(w), height: Math.floor(h)})
+		}
+	}
 
-    useEffect(() => {
-        calculateDim()
-        window.addEventListener('resize', calculateDim);
-        setTerminal(terminalRef.current!)
-    }, [])
+	useEffect(() => {
+		calculateDim()
+		window.addEventListener("resize", calculateDim)
+		if (terminalRef.current) setTerminal(terminalRef.current)
+	}, [])
 
-    useEffect(() => {
-        terminal?.addEventListener("touchstart", handleTouch, { passive: true })
-        return () => {
-            terminal?.removeEventListener("touchstart", handleTouch)
-        }
-    }, [terminal])
+	useEffect(() => {
+		terminal?.addEventListener("touchstart", handleTouch, {passive: true})
+		return () => {
+			terminal?.removeEventListener("touchstart", handleTouch)
+		}
+	}, [terminal])
 
-    const handleTouch = (event: TouchEvent) => {
-        switch (event.touches.length) {
-            case 1: () => { }; break;
-            case 2: handleTwoTouches(event); break;
-        }
-    }
+	const handleTouch = (event: TouchEvent) => {
+		switch (event.touches.length) {
+		case 1:
+			break
+		case 2:
+			handleTwoTouches(event)
+			break
+		}
+	}
 
-    const handleTwoTouches = (event: TouchEvent) => {
-        event.preventDefault();
-        const first: Touch = event.touches.item(0)!;
-        const second: Touch = event.touches.item(1)!;
-        startX = first.clientX > second.clientX ? first.clientX - second.clientX : second.clientX - first.clientX;
-        startY = first.clientY > second.clientY ? first.clientY - second.clientY : second.clientY - first.clientY;
-        startW = document.getElementById("terminal")!.getBoundingClientRect().width
-        startH = document.getElementById("terminal")!.getBoundingClientRect().height
-        document.ontouchmove = handleTwoTouchesMove;
-        document.ontouchend = handleTouchEnd;
-        document.getElementById("terminal")!.style.transition = "none"
-    }
+	const handleTwoTouches = (event: TouchEvent) => {
+		event.preventDefault()
+		const first = event.touches.item(0)
+		const second = event.touches.item(1)
+		const t = document.getElementById("terminal")
+		if (first && second) {
+			(t as HTMLDivElement).style.transition = "none"
+			startX = first.clientX > second.clientX ? first.clientX - second.clientX : second.clientX - first.clientX
+			startY = first.clientY > second.clientY ? first.clientY - second.clientY : second.clientY - first.clientY
+			startW = (t as HTMLDivElement).getBoundingClientRect().width
+			startH = (t as HTMLDivElement).getBoundingClientRect().height
+			document.ontouchmove = handleTwoTouchesMove
+			document.ontouchend = handleTouchEnd
+		}
+	}
 
-    const handleTouchEnd = () => {
-        document.ontouchmove = null;
-        document.ontouchend = null;
-        document.getElementById("terminal")!.style.transition = ""
-    }
+	const handleTouchEnd = () => {
+		(document.getElementById("terminal") as HTMLDivElement).style.transition = ""
+		document.ontouchmove = null
+		document.ontouchend = null
+	}
 
-    const handleTwoTouchesMove = (event: TouchEvent) => {
-        event.preventDefault();
-        const first: Touch = event.touches.item(0)!;
-        const second: Touch = event.touches.item(1)!;
-        const offXAfter: number = first.clientX > second.clientX ? first.clientX - second.clientX : second.clientX - first.clientX;
-        const offYAfter: number = first.clientY > second.clientY ? first.clientY - second.clientY : second.clientY - first.clientY;
-        console.log(startX, offXAfter)
-        if (offXAfter != startX || offYAfter != startY) {
-            const elmnt = document.getElementById("terminal")!
-            elmnt.style.width = `${startW + (offXAfter - startX) / 2}px`
-            elmnt.style.height = `${startH + (offYAfter - startY) / 2}px`
-        }
-        calculateDim()
-        event.preventDefault();
-    }
+	const handleTwoTouchesMove = (event: TouchEvent) => {
+		event.preventDefault()
+		const first = event.touches.item(0)
+		const second = event.touches.item(1)
+		if (first && second) {
+			const offXAfter: number =
+        first.clientX > second.clientX ? first.clientX - second.clientX : second.clientX - first.clientX
+			const offYAfter: number =
+        first.clientY > second.clientY ? first.clientY - second.clientY : second.clientY - first.clientY
+			console.log(startX, offXAfter)
+			if (offXAfter != startX || offYAfter != startY) {
+				const elmnt = document.getElementById("terminal") as HTMLDivElement
+				elmnt.style.width = `${startW + (offXAfter - startX) / 2}px`
+				elmnt.style.height = `${startH + (offYAfter - startY) / 2}px`
+			}
+			calculateDim()
+			event.preventDefault()
+		}
+	}
 
-    const dragMouseDown = (e: any) => {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-    }
+	const dragMouseDown = (e: any) => {
+		e = e || window.event
+		e.preventDefault()
+		// get the mouse cursor position at startup:
+		pos3 = e.clientX
+		pos4 = e.clientY
+		document.onmouseup = closeDragElement
+		// call a function whenever the cursor moves:
+		document.onmousemove = elementDrag
+	}
 
-    const elementDrag = (e: any) => {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // set the element's new position:
-        const elmnt = document.getElementById("terminal")!
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    }
+	const elementDrag = (e: any) => {
+		e = e || window.event
+		e.preventDefault()
+		// calculate the new cursor position:
+		pos1 = pos3 - e.clientX
+		pos2 = pos4 - e.clientY
+		pos3 = e.clientX
+		pos4 = e.clientY
+		// set the element's new position:
+		const elmnt = document.getElementById("terminal") as HTMLDivElement
+		elmnt.style.top = elmnt.offsetTop - pos2 + "px"
+		elmnt.style.left = elmnt.offsetLeft - pos1 + "px"
+	}
 
-    const closeDragElement = () => {
-        // stop moving when mouse button is released:
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
+	const closeDragElement = () => {
+		// stop moving when mouse button is released:
+		document.onmouseup = null
+		document.onmousemove = null
+	}
 
-    const minimize = () => {
-        document.getElementById("terminal")!.style.height = "0";
-        document.getElementById("terminal")!.style.minHeight = "0";
-        document.getElementById("terminal")!.style.width = "auto";
-        document.getElementById("content")!.style.height = "0";
-        document.getElementById("content")!.style.width = "auto";
-        document.getElementById("content")!.style.padding = "0";
-        document.getElementById("content")!.style.opacity = "0";
-        setCompact(true)
-    }
+	const minimize = () => {
+		const t = document.getElementById("terminal") as HTMLDivElement
+		const c = document.getElementById("content") as HTMLDivElement
+		t.style.height = "0"
+		t.style.minHeight = "0"
+		t.style.width = "auto"
+		c.style.height = "0"
+		c.style.width = "auto"
+		c.style.padding = "0"
+		c.style.opacity = "0"
+		setCompact(true)
+	}
 
-    const expand = () => {
-        document.getElementById("terminal")!.style.height = "";
-        document.getElementById("terminal")!.style.minHeight = "";
-        document.getElementById("terminal")!.style.width = "";
-        document.getElementById("content")!.style.height = "";
-        document.getElementById("content")!.style.width = "";
-        document.getElementById("content")!.style.padding = "";
-        document.getElementById("content")!.style.opacity = "";
-        setCompact(false)
-        calculateDim()
-    }
+	const expand = () => {
+		const t = document.getElementById("terminal") as HTMLDivElement
+		const c = document.getElementById("content") as HTMLDivElement
+		t.style.height = ""
+		t.style.minHeight = ""
+		t.style.width = ""
+		c.style.height = ""
+		c.style.width = ""
+		c.style.padding = ""
+		c.style.opacity = ""
+		setCompact(false)
+		calculateDim()
+	}
 
-    const close = () => {
-        document.getElementById("terminal")!.style.transform = "scale(0)";
-        document.getElementById("terminal")!.style.opacity = "0";
-        sleep(2000).then(() => {
-            document.getElementById("terminal")!.style.transform = "";
-            document.getElementById("terminal")!.style.opacity = "";
-            calculateDim()
-        })
-    }
+	const close = () => {
+		const t = document.getElementById("terminal") as HTMLDivElement
+		t.style.transform = "scale(0)"
+		t.style.opacity = "0"
+		sleep(2000).then(() => {
+			t.style.transform = ""
+			t.style.opacity = ""
+			sleep(1000).then(() => calculateDim())
+		})
+	}
 
-    return (
-        <div className={styles.terminalWrap}>
-            <div id={"terminal"} className={styles.terminal} ref={terminalRef}>
-                <div className={styles.top} onMouseDown={dragMouseDown}>
-                    <div className={styles.title}>bash{compact ? `` : `: ~ ${dim.height}x${dim.width}`}</div>
-                    <div className={styles.buttons}>
-                        <span className={styles.circleRed} onClick={close}></span>
-                        <span className={styles.circleYellow} onClick={expand}></span>
-                        <span className={styles.circleGreen} onClick={minimize}></span>
-                    </div>
-                </div>
-                <pre id={"content"} className={styles.content}>
-                    {children}
-                </pre>
-            </div>
-        </div>
-    )
+	return (
+		<div className={styles.terminalWrap}>
+			<div id={"terminal"} className={styles.terminal} ref={terminalRef}>
+				<div className={styles.top} onMouseDown={dragMouseDown}>
+					<div className={styles.title}>bash{compact ? "" : `: ~ ${dim.height}x${dim.width}`}</div>
+					<div className={styles.buttons}>
+						<span className={styles.circleRed} onClick={close}></span>
+						<span className={styles.circleYellow} onClick={expand}></span>
+						<span className={styles.circleGreen} onClick={minimize}></span>
+					</div>
+				</div>
+				<pre id={"content"} className={styles.content}>
+					{children}
+				</pre>
+			</div>
+		</div>
+	)
 }
 
 export default BashWindow

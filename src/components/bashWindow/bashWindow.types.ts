@@ -1,7 +1,5 @@
-import {ReactElement} from 'react'
-
 export type BashWindowProps = {
-  children: ReactElement<any, any> | ReactElement<any, any>[]
+  children: React.ReactChild | React.ReactChild[]
 }
 
 export type Dim = {

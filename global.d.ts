@@ -1,8 +1,20 @@
-declare module '*.svg' {
-  const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
-  export default content;
+type StaticImageData = {
+  src: string
+  height: number
+  width: number
+  placeholder?: string
 }
 
-declare module '*.module.scss';
-declare module "*.pdf";
-declare module "*.json";
+declare module '*.png' {
+  const content: StaticImageData
+  export default content
+}
+declare module '*.svg' {
+  const content: any
+  export const ReactComponent: any
+  export default content
+}
+
+declare module '*.module.scss'
+declare module '*.pdf'
+declare module '*.json'

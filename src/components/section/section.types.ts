@@ -1,12 +1,12 @@
-import {ReactElement} from 'react'
+import {ReactElement} from "react"
 
 export type SectionProps = {
   title: string
-  children: ReactElement<any, any>
+  children: ReactElement
   reversed?: boolean
   id?: string
   Svg?: {
-    svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>
+    svg: StaticImageData | string
     fill?: string
     stroke?: string
   }

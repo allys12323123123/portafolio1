@@ -1,26 +1,25 @@
-import React from 'react'
-import { useThemeContext } from '../../utilities/themeContext'
-import RocketSvg from '../../assets/rocket.svg'
-import WindSvg from '../../assets/wind.svg'
-
-import * as styles from './rocket.module.scss'
+import React from "react"
+//import { useThemeContext } from '../../utilities/themeContext'
+import WindSvg from "../../../public/assets/wind.svg"
+import RocketSvg from "../../../public/assets/rocket.svg"
+import * as styles from "./rocket.module.scss"
+import Image from "next/image"
 
 const Rocket = (): JSX.Element => {
+	//const theme: string = useThemeContext();
 
-    const theme: string = useThemeContext();
-
-    return (
-        <div className={styles.wrap}>
-            <div className={styles.rocketWrap}>
-                <div className={styles.rocket}>
-                    <RocketSvg width={"200px"} fill={theme === "dark" ? "var(--rocket-dark)" : "var(--rocket-light)"} />
-                </div>
-            </div>
-            <div className={styles.wind}>
-                <WindSvg width={"400px"} height={"200px"} fill={theme === "dark" ? "var(--wind-dark)" : "var(--wind-light)"} />
-            </div>
-        </div>
-    )
+	return (
+		<div className={styles.wrap}>
+			<div className={styles.rocketWrap}>
+				<div className={styles.rocket}>
+					<Image src={RocketSvg} width={200} height={400} />
+				</div>
+			</div>
+			<div className={styles.wind}>
+				<Image src={WindSvg} width={400} height={200} />
+			</div>
+		</div>
+	)
 }
 
 export default Rocket

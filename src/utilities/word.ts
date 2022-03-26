@@ -1,7 +1,7 @@
 import randomNumber from './randomNumber'
-//import data from './words.json'
-import dataEN from './dictionary.json'
-import dataIT from './parole.json'
+//import data from '../../public/json/words.json'
+import dataEN from '../../public/json/dictionary.json'
+import dataIT from '../../public/json/parole.json'
 
 const randomWord = (length: number = 20, language: string = 'en'): string => {
   const data = language === 'en' ? dataEN : dataIT
@@ -18,6 +18,7 @@ const randomWord = (length: number = 20, language: string = 'en'): string => {
 }
 
 export const getDefinition = (key: string): string => {
+  //@ts-ignore
   return dataEN[key]
 }
 
