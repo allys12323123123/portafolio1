@@ -1,16 +1,15 @@
-import Image from 'next/image'
-import React from 'react'
+import Image from "next/image"
+import React from "react"
 
-import * as styles from './ball.module.scss'
-import { BallProps } from './ball.types'
+import * as styles from "./ball.module.scss"
+import {BallProps} from "./ball.types"
 
-const Ball = ({ BallSvg, fastAnimation = false }: BallProps): JSX.Element => {
-
-    return (
-        <div className={fastAnimation ? styles.ballFast : styles.ball}>
-            <Image src={BallSvg} layout='fill' priority />
-        </div>
-    )
+const Ball = ({BallSvg, fastAnimation = false}: BallProps): JSX.Element => {
+ return (
+  <div className={fastAnimation ? styles.ballFast : styles.ball}>
+   <Image src={BallSvg} layout="fill" loader={({src}) => src} priority />
+  </div>
+ )
 }
 
 export default Ball

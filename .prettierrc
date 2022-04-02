@@ -1,10 +1,10 @@
 {
-    "endOfLine": "lf",
+    "endOfLine": "crlf",
     "semi": false,
-    "singleQuote": true,
+    "singleQuote": false,
     "tabWidth": 2,
     "trailingComma": "all",
     "bracketSpacing": false,
     "jsxBracketSameLine": true,
     "printWidth": 120
-  }
+}
