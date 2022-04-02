@@ -19,7 +19,7 @@ const Profile = (): JSX.Element => {
 					title="Download my CV"
 					download="CV_Michele_Pulvirenti.pdf"
 				>
-          Download CV
+     Download CV
 				</a>
 			</span>
 			{/*

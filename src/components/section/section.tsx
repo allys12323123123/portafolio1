@@ -1,12 +1,12 @@
-import React, { useState } from "react"
-import { SectionProps } from "./section.types"
+import React, {useState} from "react"
+import {SectionProps} from "./section.types"
 
 import * as styles from "./section.module.scss"
 import sleep from "../../utilities/sleep"
-import { useThemeContext } from "../../utilities/themeContext"
+import {useThemeContext} from "../../utilities/themeContext"
 import Image from "next/image"
 
-const Section = ({ title, children, id, reversed = false, Svg, paragraph = false }: SectionProps): JSX.Element => {
+const Section = ({title, children, id, reversed = false, Svg, paragraph = false}: SectionProps): JSX.Element => {
 	const theme: string = useThemeContext()
 
 	const [isClicked, setIsClicked] = useState<boolean>(false)
@@ -31,7 +31,7 @@ const Section = ({ title, children, id, reversed = false, Svg, paragraph = false
 	return (
 		<div
 			className={`${reversed ? styles.sectionReversed : styles.section} ${theme === "dark" ? "" : styles.light}`}
-			style={{ backgroundColor: theme === "dark" ? "var(--sect-bg-dark)" : "var(--sect-bg-light)" }}
+			style={{backgroundColor: theme === "dark" ? "var(--sect-bg-dark)" : "var(--sect-bg-light)"}}
 			id={id ? id : title}
 		>
 			{paragraph ? (
@@ -42,15 +42,15 @@ const Section = ({ title, children, id, reversed = false, Svg, paragraph = false
 							<div className={styles.svg} onClick={setClicked} onMouseEnter={setMouseOn} onMouseDown={setClicked}>
 								<div
 									className={isMouseOn ? styles.trebbling : null || isClicked ? styles.move : null}
-								//fill={Svg.fill ? Svg.fill : "none"}
-								//stroke={Svg.stroke ? Svg.stroke : "none"}
+									//fill={Svg.fill ? Svg.fill : "none"}
+									//stroke={Svg.stroke ? Svg.stroke : "none"}
 								>
 									<Image
 										src={Svg.svg}
 										width={100}
 										height={100}
 										alt={title}
-										loader={({ src }) => src + "?w=100"}
+										loader={({src}) => src + "?w=100"}
 										objectFit="cover"
 									/>
 								</div>
@@ -61,9 +61,7 @@ const Section = ({ title, children, id, reversed = false, Svg, paragraph = false
 				</>
 			) : (
 				<>
-					<h2
-						className={`${reversed ? styles.titleReversed : styles.title} ${theme === "dark" ? "" : styles.titleLight}`}
-					>
+					<h2 className={`${reversed ? styles.titleReversed : styles.title} ${theme === "dark" ? "" : styles.titleLight}`}>
 						{title}
 					</h2>
 					<div className={reversed ? styles.contentReversed : styles.content}>
@@ -72,14 +70,14 @@ const Section = ({ title, children, id, reversed = false, Svg, paragraph = false
 								<div
 									//fill={Svg.fill ? Svg.fill : "none"}
 									className={isMouseOn ? styles.trebbling : "" || isClicked ? styles.move : ""}
-								//</div>stroke={Svg.stroke ? Svg.stroke : "none"}
+									//</div>stroke={Svg.stroke ? Svg.stroke : "none"}
 								>
 									<Image
 										src={Svg.svg}
 										width={100}
 										height={100}
 										alt={title}
-										loader={({ src }) => src + "?w=100"}
+										loader={({src}) => src + "?w=100"}
 										objectFit="cover"
 									/>
 								</div>

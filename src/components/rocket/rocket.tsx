@@ -12,11 +12,11 @@ const Rocket = (): JSX.Element => {
 		<div className={styles.wrap}>
 			<div className={styles.rocketWrap}>
 				<div className={styles.rocket}>
-					<Image src={RocketSvg} width={200} height={400} loader={({ src }) => src + "?w=200"} />
+					<Image src={RocketSvg} width={200} height={400} loader={({src}) => src + "?w=200"} />
 				</div>
 			</div>
 			<div className={styles.wind}>
-				<Image src={WindSvg} width={400} height={200} loader={({ src }) => src + "?w=400"} />
+				<Image src={WindSvg} width={400} height={200} loader={({src}) => src + "?w=400"} />
 			</div>
 		</div>
 	)

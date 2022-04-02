@@ -79,9 +79,9 @@ const BashWindow = ({children}: BashWindowProps): JSX.Element => {
 		const second = event.touches.item(1)
 		if (first && second) {
 			const offXAfter: number =
-        first.clientX > second.clientX ? first.clientX - second.clientX : second.clientX - first.clientX
+    first.clientX > second.clientX ? first.clientX - second.clientX : second.clientX - first.clientX
 			const offYAfter: number =
-        first.clientY > second.clientY ? first.clientY - second.clientY : second.clientY - first.clientY
+    first.clientY > second.clientY ? first.clientY - second.clientY : second.clientY - first.clientY
 			console.log(startX, offXAfter)
 			if (offXAfter != startX || offYAfter != startY) {
 				const elmnt = document.getElementById("terminal") as HTMLDivElement
@@ -104,7 +104,7 @@ const BashWindow = ({children}: BashWindowProps): JSX.Element => {
 		document.onmousemove = elementDrag
 	}
 
-	const elementDrag = (e: any) => {
+	const elementDrag = (e: MouseEvent) => {
 		e = e || window.event
 		e.preventDefault()
 		// calculate the new cursor position:

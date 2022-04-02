@@ -38,11 +38,7 @@ const Layout = ({children, noMenu = false}: LayoutProps): JSX.Element => {
 		<ThemeContext.Provider value={lightMode ? "light" : "dark"}>
 			<div id="top" className={styles.layout}>
 				<NavBar changeToggle={changeDarkMode} noMenu={noMenu} />
-				{browser === "waiting" ? null : browser === "Safari" ? (
-					<Ball BallSvg={BallStill} />
-				) : (
-					<Ball BallSvg={BallMoving} />
-				)}
+				{browser === "waiting" ? null : browser === "Safari" ? <Ball BallSvg={BallStill} /> : <Ball BallSvg={BallMoving} />}
 
 				{children}
 

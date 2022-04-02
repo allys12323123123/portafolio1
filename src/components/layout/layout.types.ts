@@ -1,4 +1,4 @@
 export type LayoutProps = {
-  children: React.ReactElement
-  noMenu?: boolean
+ children: React.ReactElement
+ noMenu?: boolean
 }

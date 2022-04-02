@@ -74,31 +74,31 @@ const GameHero = (): JSX.Element => {
 				<div className={styles.restart}>
 					<p>Guess the word or </p>
 					<button onClick={fetchData} className={styles.buttonRestart}>
-            RESTART
+      RESTART
 					</button>
 				</div>
 			) : (
 				<>
 					<h3>RULES</h3>
 					<h4>
-            The game is easy. <br />
-            You guess the secret word by placing letters in boxes.
+      The game is easy. <br />
+      You guess the secret word by placing letters in boxes.
 						<br />
 						<br />
 						<li>
-              When you guess a letter, the box turns <span style={{color: "var(--orange)"}}>orange</span>
+       When you guess a letter, the box turns <span style={{color: "var(--orange)"}}>orange</span>
 						</li>
 						<li>
-              When you guess both the letter and the position in the word, the box turns{" "}
+       When you guess both the letter and the position in the word, the box turns{" "}
 							<span style={{color: "var(--pink)"}}>pink</span>
 						</li>
 						<br />
-            You can change the MAX length and the language of the hidden word at the top. <br />
+      You can change the MAX length and the language of the hidden word at the top. <br />
 						<br />
-            That`&apos;`s all! Enjoy the game!
+      That`&apos;`s all! Enjoy the game!
 					</h4>
 					<button onClick={fetchData} className={styles.buttonStart}>
-            START
+      START
 					</button>
 				</>
 			)}
