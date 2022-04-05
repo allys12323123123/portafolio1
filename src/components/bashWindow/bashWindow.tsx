@@ -185,3 +185,4 @@ const BashWindow = ({children}: BashWindowProps): JSX.Element => {
 }
 
 export default BashWindow
+
